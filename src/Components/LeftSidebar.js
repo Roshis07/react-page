@@ -7,7 +7,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 
 export default function LeftSidebar() {
   const theme = useTheme();
-  const isXs = useMediaQuery(theme.breakpoints.down("xs"));
+  const isXs = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <Box
@@ -18,96 +18,19 @@ export default function LeftSidebar() {
       }}
     >
       <Stack spacing={2}>
-        <Button
-          sx={{
-            "&:active": {
-              boxShadow: "0px 5px 10px rgba(0, 0, 0, 0.3)",
-              transform: "scale(0.98)",
-            },
-          }}
-        >
-          Item 1
-        </Button>
-        <Button
-          sx={{
-            "&:active": {
-              boxShadow: "0px 5px 10px rgba(0, 0, 0, 0.3)",
-              transform: "scale(0.98)",
-            },
-          }}
-        >
-          Item 2
-        </Button>
-        <Button
-          sx={{
-            "&:active": {
-              boxShadow: "0px 5px 10px rgba(0, 0, 0, 0.3)",
-              transform: "scale(0.98)",
-            },
-          }}
-        >
-          Item 3
-        </Button>
-        <Button
-          sx={{
-            "&:active": {
-              boxShadow: "0px 5px 10px rgba(0, 0, 0, 0.3)",
-              transform: "scale(0.98)",
-            },
-          }}
-        >
-          Item 4
-        </Button>
-        <Button
-          sx={{
-            "&:active": {
-              boxShadow: "0px 5px 10px rgba(0, 0, 0, 0.3)",
-              transform: "scale(0.98)",
-            },
-          }}
-        >
-          Item 5
-        </Button>
-        <Button
-          sx={{
-            "&:active": {
-              boxShadow: "0px 5px 10px rgba(0, 0, 0, 0.3)",
-              transform: "scale(0.98)",
-            },
-          }}
-        >
-          Item 6
-        </Button>
-        <Button
-          sx={{
-            "&:active": {
-              boxShadow: "0px 5px 10px rgba(0, 0, 0, 0.3)",
-              transform: "scale(0.98)",
-            },
-          }}
-        >
-          Item 7
-        </Button>
-        <Button
-          sx={{
-            "&:active": {
-              boxShadow: "0px 5px 10px rgba(0, 0, 0, 0.3)",
-              transform: "scale(0.98)",
-            },
-          }}
-        >
-          Item 8
-        </Button>
-        <Button
-          sx={{
-            "&:active": {
-              boxShadow: "0px 5px 10px rgba(0, 0, 0, 0.3)",
-              transform: "scale(0.98)",
-            },
-          }}
-        >
-          Item 9
-        </Button>
+        {[...Array(9).keys()].map((item) => (
+          <Button
+            key={item}
+            sx={{
+              "&:active": {
+                boxShadow: "0px 5px 10px rgba(0, 0, 0, 0.3)",
+                transform: "scale(0.98)",
+              },
+            }}
+          >
+            Item {item + 1}
+          </Button>
+        ))}
       </Stack>
     </Box>
   );

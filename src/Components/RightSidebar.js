@@ -1,27 +1,37 @@
 import * as React from "react";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 export default function RightSidebar() {
   const theme = useTheme();
-  const isXs = useMediaQuery(theme.breakpoints.down("xs"));
-
-  if (isXs) {
-    return null; // Return null to hide the RightSidebar on xs screens
-  }
+  const isXs = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
-    <Stack
-      alignItems="center"
+    <Box
       sx={{
         flex: 1,
-        backgroundColor: "red",
-        padding: theme.spacing(2),
+        backgroundColor: "white",
+        display: isXs ? "none" : "block",
       }}
     >
-      <h3>Right Sidebar</h3>
-      <p>Content goes here...</p>
-    </Stack>
+      <Stack spacing={2}>
+        {[...Array(9).keys()].map((item) => (
+          <Button
+            key={item}
+            sx={{
+              "&:active": {
+                boxShadow: "0px 5px 10px rgba(0, 0, 0, 0.3)",
+                transform: "scale(0.98)",
+              },
+            }}
+          >
+            Item {item + 1}
+          </Button>
+        ))}
+      </Stack>
+    </Box>
   );
 }
